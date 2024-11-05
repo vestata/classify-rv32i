@@ -25,10 +25,19 @@
 relu:
     li t0, 1             
     blt a1, t0, error     
-    li t1, 0             
+    li t1, 0                    # index counter
 
 loop_start:
-    # TODO: Add your own implementation
+    # DONE: Add your own implementation
+    lw t3, 0(a0)                # load from memory
+    bge t3, zero, t3_ge_0       # if a[i] < 0
+    sw zero, 0(a0)
+t3_ge_0:
+    addi a0, a0, 4              # move to next word
+    addi t1, t1, 1              # counter++
+    blt t1, a1, loop_start      # if(counter < a1) loop
+
+    jr ra
 
 error:
     li a0, 36          
