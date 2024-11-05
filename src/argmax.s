@@ -23,14 +23,27 @@
 # =================================================================
 argmax:
     li t6, 1
-    blt a1, t6, handle_error
+    blt a1, t6, handle_error            # handle error
 
-    lw t0, 0(a0)
+    lw t0, 0(a0)                        # temporary store max
 
-    li t1, 0
-    li t2, 1
+    li t1, 0                            # set max index
+    li t2, 1                            # counter
 loop_start:
-    # TODO: Add your own implementation
+    # DONE: Add your own implementation
+    bge t2, a1, break                   # if(t2 >= a1) break
+    addi a0, a0, 4                      
+    lw t3, 0(a0)                        
+    blt t3, t0, skipp                   # update t0 if there are larger element
+    mv t0, t3
+    mv t1, t2                           # update index
+skipp:
+    addi t2, t2, 1                      # counter++
+    j loop_start
+
+break:
+    mv a0, t1                           # set return a0
+    jr ra
 
 handle_error:
     li a0, 36
