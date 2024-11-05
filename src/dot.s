@@ -36,7 +36,7 @@ dot:
 
 loop_start:
     bge t1, a2, loop_end        # if(counter >= length) break;
-    # TODO: Add your own implementation
+    # DONE: Add your own implementation
     lw t3, 0(a0)
     lw t4, 0(a1)
 
