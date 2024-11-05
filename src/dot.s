@@ -31,12 +31,30 @@ dot:
     blt a3, t0, error_terminate   
     blt a4, t0, error_terminate  
 
-    li t0, 0            
-    li t1, 0         
+    li t0, 0                    # accumulator
+    li t1, 0                    # counter
 
 loop_start:
-    bge t1, a2, loop_end
+    bge t1, a2, loop_end        # if(counter >= length) break;
     # TODO: Add your own implementation
+    lw t3, 0(a0)
+    lw t4, 0(a1)
+
+mul_loop:                       # implement multiplication without mul extension
+    ble t4, zero, mul_end
+    add t0, t0, t3
+    addi t4, t4, -1
+    j mul_loop
+mul_end:
+
+    addi t1, t1, 1              # counter++
+
+    slli t5, a3, 2              # stride * 4 since the data is word wide
+    slli t6, a4, 2
+    
+    add a0, a0, t5              # Iterate through the array
+    add a1, a1, t6
+    j loop_start
 
 loop_end:
     mv a0, t0
