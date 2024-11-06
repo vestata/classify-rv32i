@@ -40,12 +40,17 @@ loop_start:
     lw t3, 0(a0)
     lw t4, 0(a1)
 
-mul_loop_dot:                       # implement multiplication without mul extension
-    ble t4, zero, mul_end_dot
-    add t0, t0, t3
-    addi t4, t4, -1
-    j mul_loop_dot
-mul_end_dot:
+
+multiply_loop:
+    andi t5, t4, 1            # Check if LSB of t4 is 1
+    beq t5, zero, skip_add    # If LSB is 0, skip addition
+    add t0, t0, t3            
+
+skip_add:
+    slli t3, t3, 1            # Shift t3 left by 1 (t3 *= 2)
+    srli t4, t4, 1            # Shift t4 right by 1 (t4 /= 2)
+    bne t4, zero, multiply_loop  # Continue loop if t4 != 0
+multiply_end:
 
     addi t1, t1, 1              # counter++
 

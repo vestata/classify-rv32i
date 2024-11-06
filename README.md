@@ -11,6 +11,6 @@ AssertionError: b'\x0[26 chars]x00\x84\x04\x00\x00\x8c\x00\x00\x00\x14\xfd\xf[10
 
 Here are some approaches to try in order to resolve this issue:
 
-- [ ] **Convert .bin files to ASCII**: Check the outputs by converting the .bin files in chain-1 to ASCII format for easier comparison.
-- [ ] **Use the mul extension**: Verify if the custom multiplication implementation is causing issues by testing with the mul extension.
+- [x] **Convert .bin files to ASCII**: Check the outputs by converting the .bin files in chain-1 to ASCII format for easier comparison.
+- [x] **Use the mul extension**: Verify if the custom multiplication implementation is causing issues by testing with the mul extension.
 - [ ] **Review chain.s in detail**: Carefully go through chain.s to identify any potential problems.
