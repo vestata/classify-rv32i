@@ -77,12 +77,16 @@ read_matrix:
     # mul s1, t1, t2   # s1 is number of elements
     # DONE: Replace 'mul' with your own implementation
     li s1, 0
-mul_loop_r:
-    ble t2, zero, mul_end_r
-    add s1, s1, t1
-    addi t2, t2, -1
-    j mul_loop_r
-mul_end_r:
+multiply_loop_r:
+    andi t3, t2, 1            
+    beq t3, zero, skip_add_r    
+    add s1, s1, t1            
+
+skip_add_r:
+    slli t1, t1, 1            
+    srli t2, t2, 1            
+    bne t2, zero, multiply_loop_r  
+multiply_end_r:
 
     slli t3, s1, 2
     sw t3, 24(sp)    # size in bytes

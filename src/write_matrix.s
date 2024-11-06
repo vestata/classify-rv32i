@@ -64,12 +64,17 @@ write_matrix:
     # mul s4, s2, s3   # s4 = total elements
     # DONE: Replace 'mul' with your own implementation
     li s4, 0
-mul_loop_w:
-    ble s3, zero, mul_end_w
-    add s4, s4, s2
-    addi s3, s3, -1
-    j mul_loop_w
-mul_end_w:
+    li t0, 0
+multiply_loop_w:
+    andi t0, s3, 1            
+    beq t0, zero, skip_add_w    
+    add s4, s4, s2            
+
+skip_add_w:
+    slli s2, s2, 1            
+    srli s3, s3, 1            
+    bne s3, zero, multiply_loop_w  
+multiply_end_w:
 
 
     # write matrix data to file
