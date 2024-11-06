@@ -40,12 +40,12 @@ loop_start:
     lw t3, 0(a0)
     lw t4, 0(a1)
 
-mul_loop:                       # implement multiplication without mul extension
-    ble t4, zero, mul_end
+mul_loop_dot:                       # implement multiplication without mul extension
+    ble t4, zero, mul_end_dot
     add t0, t0, t3
     addi t4, t4, -1
-    j mul_loop
-mul_end:
+    j mul_loop_dot
+mul_end_dot:
 
     addi t1, t1, 1              # counter++
 
