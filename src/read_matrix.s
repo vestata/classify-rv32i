@@ -75,7 +75,7 @@ read_matrix:
     sw t2, 0(s4)     # saves num cols
 
     # mul s1, t1, t2   # s1 is number of elements
-    # FIXME: Replace 'mul' with your own implementation
+    # DONE: Replace 'mul' with your own implementation
     li s1, 0
 mul_loop:
     ble t2, zero, mul_end
