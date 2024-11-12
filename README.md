@@ -4,7 +4,7 @@ TODO: Add your own descriptions here.
 ## Part A: Mathematical FunctionsTask A
 ### Task 1: ReLU
 ### Task 1.1: abs
-Get absolute value function using 2's complement number system. 
+Get absolute value function using 2's complement numerical system. 
 ### Task 2: ArgMax
 ### Task 3.1: Dot Product
 ### Task 3.2: Matrix Multiplication
