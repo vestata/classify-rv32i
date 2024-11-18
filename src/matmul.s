@@ -117,7 +117,6 @@ inner_loop_start:
 inner_loop_end:
     # DONE: Add your own implementation
     addi s0, s0, 1 # add counter
-    bge s0, a1, outer_loop_end # if(counter >= len(row))
     slli t1, a2, 2 # calculate the length of one row
     add s3, s3, t1 # go to the address of next row
     j outer_loop_start        
